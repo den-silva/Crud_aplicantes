@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Aplicantes";
+}
+@section scripts{
+    <script>
+        var urlAlteracao = '@Url.Action("Alterar", "Aplicante", new { area = "" })';
+        var urlExclusao = '@Url.Action("Excluir", "Aplicante", new { area = "" })';
+
+        var urlClienteList = '@Url.Action("AplicanteList", "Aplicante", new { area = "" })';
+
+
+        var urlBeneficiarioList = '@Url.Action("BeneficiarioList", "Beneficiario", new { area = "" })';
+        var urlAlteracaoBeneficiario = '@Url.Action("Alterar", "Beneficiario", new { area = "" })';
+
+        $("#CPF").mask("000.000.000-00");
+        $('.CEP').mask('00000-000');
+
+    </script>
+    @Scripts.Render("~/bundles/listClientes")
+    @Scripts.Render("~/bundles/listBeneficiario")
+
+}
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.ActionLink("Novo Aplicante", "Incluir", "Aplicante", new { }, new { @class = "btn btn-sm btn-primary pull-right" })
+
+<table id="gridClientes" class="table"></table>
